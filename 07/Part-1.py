@@ -118,19 +118,26 @@ def run(list_all, input_1, input_2):
 
 def run1(phase_code):
     output = 0
-    # phase_codes = phase_code()
-    # for codes in phase_codes:
     for phase in phase_code:
         input_1 = phase
 
         if phase_code.index(phase) == 0:
             input_2 = 0
-            output = run(read_file("input.txt"), input_1, input_2)
-
         else:
             input_2 = output
-            output = run(read_file("input.txt"), input_1, input_2)
+
+        output = run(read_file("input.txt"), input_1, input_2)
 
     return output
 
-print(run1([4, 3, 2, 1, 0]))
+
+def highest_score():
+    scores = []
+
+    for codes in phase_code():
+        scores.append(run1(codes))
+
+    return max(scores)
+
+
+print(highest_score())
